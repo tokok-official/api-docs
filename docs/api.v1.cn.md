@@ -18,23 +18,31 @@ API 请求在通过 Internet 发送的过程中极有可能被篡改。为了确
 <br>
 
 ## 如何对请求参数进行签名
-用户提交的参数、请求头中的ACCESS-KEY及ACCESS-TIMESTAMP，都参与签名。
-首先，将待签名字符串要求按照参数名的字典顺序进行排序。
+签名前字符串包含以下几部分内容：
+1)请求参数
+2)请求头中的ACCESS-KEY及ACCESS-TIMESTAMP
+首先，按照参数名的字典顺序进行排序。
 例如：
+
+请求头
 ```
 ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6
 ACCESS-TIMESTAMP=1543057116
 ```
 
-参数如下:
+请求参数如下:
 ```
 string[] parameters={"symbol=tok_eth","type=1","entrustPrice=1.03","entrustCount=100"};
 ```
-生成待签名的字符串 
+其次将排序好的各项参数使用&拼接。
+
+生成签名前字符串 
 ```
 ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entrustCount=100&entrustPrice=1.03&symbol=tok_eth&type=1
 ```
-最后，根据secretKey使用HMAC SHA256算法，对最终待签名字符串进行签名，计算结果采用base64编码(该字符串赋值于请求头ACCESS-SIGN)。
+最后，根据secretKey（私钥）使用HMAC SHA256方法加密，通过Base64编码输出而得到的即为签名(ACCESS-SIGN)。
+>注意ACCESS-SIGN需要通过请求头传递。
+
 
 <br>
 
