@@ -11,9 +11,9 @@
 ## 签名认证
 API 请求在通过 Internet 发送的过程中极有可能被篡改。为了确保请求未被更改，我们会要求用户在每个请求中带上签名（行情 API 除外），来校验参数或参数值在传输途中是否发生了更改。
 所有需要签名的接口，其请求头都必须包含以下内容：
->`ACCESS-KEY` 字符串类型的API Key。
->`ACCESS-SIGN` 使用base64编码签名(请参阅签名)。
->`ACCESS-TIMESTAMP` 发起请求的时间戳，Unix时间戳的十进制秒数格式。
+>`ACCESS-KEY` 字符串类型的API Key。  
+>`ACCESS-SIGN` 使用base64编码签名(请参阅签名)。  
+>`ACCESS-TIMESTAMP` 发起请求的时间戳，Unix时间戳的十进制秒数格式。  
 
 <br>
 
