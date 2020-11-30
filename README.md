@@ -274,7 +274,7 @@ Response Details
 
 ```javascript
 symbol: 	trading pair 
-status: 	status （At present, only status is in trading）
+status: 	status(At present, only status is in trading)
 baseAsset: 	base currency 
 baseAssetPrecision:	decimal number of base currency 
 quoteAsset:		quote currency
@@ -515,7 +515,7 @@ Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
 symbol	|String	|Yes	|Ex: tok_eth
-status	|Integer|Yes	|query status: 0 for unfilled orders, 1 for filled orders（maximum 10）
+status	|Integer|Yes	|query status: 0 for unfilled orders, 1 for filled orders(maximum 10)
 page	|Integer|yes	|Current page number
 pageSize|Integer|Yes	|number of orders returned per page, maximum 50
 
