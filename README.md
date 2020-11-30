@@ -15,9 +15,9 @@ API interface documentation
 Web service requests are sent across the Internet and are vulnerable to tampering. For security reasons, TOKOK requires a signature as part of every request except for ticker API.
 All request formatted for signature must contain:
 
->`ACCESS-KEY`  that distributed when users created API Key
->`ACCESS-SIGN` base64 encoded signature
->`ACCESS-TIMESTAMP` the time at which you make the request. Unix timestamp format decimal in seconds (Ex：1543057116)
+>`ACCESS-KEY`  that distributed when users created API Key  
+>`ACCESS-SIGN` base64 encoded signature  
+>`ACCESS-TIMESTAMP` the time at which you make the request. Unix timestamp format decimal in seconds (Ex：1543057116)  
 
 <br>
 
