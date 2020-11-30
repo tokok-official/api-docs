@@ -47,7 +47,7 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 ## Price API
 
 ### Get ticker
-1.`Get /api/v1/tickers` Used to get price tickers for all markets.
+1.`Get /api/v1/tickers` Used to get price tickers for all markets.  
 URL https://www.tokok.com/api/v1/tickers
 
 #### Example
