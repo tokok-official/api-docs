@@ -27,11 +27,11 @@ ACCESS-SIGN的请求头是对ACCESS-TIMESTAMP、ACCESS-KEY及请求参数，先�
 ```
 Content-Type: application/x-www-form-urlencoded
 
-ACCESS-KEY: 09c2c831-6737-49db-879e-0b21416a54f6
+ACCESS-KEY: 7af397d3-7500-461a-a6c0-27f87b1ce7e6
 
-ACCESS-SIGN: S5KQGc3tZt6AXgdJqVN7dTzyFRBVKyRAUrcDC+FzjA4=
+ACCESS-SIGN: 1ACCks+RqDCBY7S+s30RIVUAlIHLf+pYszH5vm+lSFg=
 
-ACCESS-TIMESTAMP: 1606727173506
+ACCESS-TIMESTAMP: 1606729152
 ```
 
 (2) 是否在程序中正确地配置了APIKey
@@ -40,24 +40,24 @@ ACCESS-TIMESTAMP: 1606727173506
 
 请求头：
 ```
-ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6
-ACCESS-TIMESTAMP=1543057116
+ACCESS-KEY=7af397d3-7500-461a-a6c0-27f87b1ce7e6
+ACCESS-TIMESTAMP=1606729152
 ```
 
 请求参数：
 ```
 symbol：tok_eth
 type：1
-entrustPrice： 680
-entrustCount： 100
+entrustPrice： 0.000712
+entrustCount： 200
 ```
 
 签名前字符串
 ```
-ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entrustCount=100&entrustPrice=1.03&symbol=tok_eth&type=1
+ACCESS-KEY=7af397d3-7500-461a-a6c0-27f87b1ce7e6&ACCESS-TIMESTAMP=1606729152&entrustCount=200&entrustPrice=0.000712&symbol=tok_eth&type=1
 ```
 
-(4) 签名结果（ACCESS-SIGN）的长度应为44位，如：S5KQGc3tZt6AXgdJqVN7dTzyFRBVKyRAUrcDC+FzjA4=，如果长度为88位，是对签名结果进行了16进制编码导致。
+(4) 签名结果（ACCESS-SIGN）的长度应为44位，如：1ACCks+RqDCBY7S+s30RIVUAlIHLf+pYszH5vm+lSFg=，如果长度为88位，是对签名结果进行了16进制编码导致。
 
 <br/>
 
