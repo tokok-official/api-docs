@@ -589,6 +589,9 @@ Error code | Description
 83114	|No order
 83015	|Required parameters of batch trade can not be null
 83016	|Exceed maximum order number
+83017	|Insufficient account balance
+83018	|Incorrect trading decimal places
+83019	|The order quantity is less than the minimum quantity
 84001	|Lack of timestamp
 84002	|Lack of signature
 84003	|Lack of parameters
