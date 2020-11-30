@@ -1,15 +1,15 @@
 {
 	"info": {
 		"_postman_id": "cee2e6e4-0304-4a7e-bce3-0f2e96614464",
-		"name": "API接口",
+		"name": "API Interface",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "行情接口",
+			"name": "Interface 1(行情接口)",
 			"item": [
 				{
-					"name": "行情接口",
+					"name": "tickers(行情接口)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "行情接口2",
+					"name": "ticker(行情接口2)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -53,7 +53,7 @@
 					"response": []
 				},
 				{
-					"name": "深度接口",
+					"name": "depth(深度接口)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -82,7 +82,7 @@
 					"response": []
 				},
 				{
-					"name": "最新成交接口",
+					"name": "trades(最新成交)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -111,7 +111,7 @@
 					"response": []
 				},
 				{
-					"name": "K线接口",
+					"name": "kline(K线接口)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -144,7 +144,7 @@
 					"response": []
 				},
 				{
-					"name": "交易对信息",
+					"name": "exchangeInfo(交易对信息)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -166,10 +166,10 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "交易接口",
+			"name": "Interface 2(交易接口)",
 			"item": [
 				{
-					"name": "下单交易",
+					"name": "Place order(下单交易)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -294,7 +294,7 @@
 					"response": []
 				},
 				{
-					"name": "批量下单",
+					"name": "Batch order(批量下单)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -414,7 +414,7 @@
 					"response": []
 				},
 				{
-					"name": "撤销订单",
+					"name": "Cancel order(撤销订单)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -519,7 +519,7 @@
 					"response": []
 				},
 				{
-					"name": "批量撤单",
+					"name": "Batch cancel(批量撤单)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -629,7 +629,7 @@
 					"response": []
 				},
 				{
-					"name": "订单列表",
+					"name": "Order List(订单列表)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -757,7 +757,7 @@
 					"response": []
 				},
 				{
-					"name": "订单信息",
+					"name": "Order info(订单信息)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -853,7 +853,7 @@
 					"response": []
 				},
 				{
-					"name": "币对账户信息",
+					"name": "Account info(币对账户信息)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -948,7 +948,7 @@
 					"response": []
 				},
 				{
-					"name": "所有账户信息",
+					"name": "Account info2(所有账户信息)",
 					"event": [
 						{
 							"listen": "prerequest",
