@@ -101,8 +101,9 @@ sell: ask price
 vol: trading volume of the last 24 hours
 
 Parameters
-Parameters	Type	Required	Description
-symbol	String	Yes	Ex: tok_eth
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|Yes	|Ex: tok_eth
 
 
 ### Get market depth
@@ -128,10 +129,12 @@ GET https://www.tokok.com/api/v1/depth?symbol=tok_eth
 Response Details
 asks : ask array [[price，volume],··· ] 
 bids : bid array [[price，volume],··· ]
+
 Parameters
-Parameters	Type	Required	Description
-symbol	String	Yes	Ex: tok_eth
-size	Integer	Optional(defult 50)	value: 1-50
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|Yes	|Ex: tok_eth
+size	|Integer|Optional(defult 50)	|value: 1-50
 
 
 ### Get recent trades
@@ -160,10 +163,12 @@ timestamp: time
 price: price
 amount: amount
 side: buy/sell ‘sell’ or ‘buy’ 
+
 Parameters
-Parameters	Type	Required	Description
-symbol	String	Yes	Ex: tok_eth
-size	Integer	Optional	Ex：50
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|Yes	|Ex: tok_eth
+size	|Integer	|Optional	|Ex：50
 
 
 ### Get K line
@@ -201,11 +206,13 @@ Response Details
 	“2367.37",	closing
 	"17259.83"	volume
 ]
+
 Parameters
-Parameters	Type	Required	Description
-symbol	String	Yes	Ex: tok_eth
-type	String	Yes	
-size	Integer	Optional	Limit the amount of data returned
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|Yes	|Ex: tok_eth
+type	|String	|Yes	
+size	|Integer	|Optional	|Limit the amount of data returned
 
 
 type 	1min/5min/15min/30min/60min/1day/1week/1mon
@@ -274,8 +281,10 @@ Response Details
 hotMoney: available fund
 coldMoney: frozen fund
 coinCode: currency symbol
+
 Parameters
-Parameters	Type	Required	Description
+Parameters	|Type	|Required	|Description
+-|-|-|-
 N/A
 
 ### Get pair info
@@ -305,6 +314,7 @@ Response Details
 hotMoney: available balance
 coldMoney: frozen balance
 coinCode: currency symbol
+
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
