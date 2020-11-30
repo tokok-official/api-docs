@@ -88,7 +88,7 @@ sell: ask price
 vol: trading volume of the last 24 hours
 ```
 
-2.`Get /api/v1/ticker`   Used to get the current tick values for a market.  
+2.`Get /api/v1/ticker` Used to get the current tick values for a market.  
 
 #### Example
 ```javascript
@@ -186,7 +186,7 @@ Response Details
 timestamp: time
 price: price
 amount: amount
-side: buy/sell ‘sell’ or ‘buy’ 
+side: buy/sell 'sell' or 'buy' 
 
 Parameters
 Parameters	|Type	|Required	|Description
@@ -361,7 +361,7 @@ symbol	|String	|yes	|Trading pair like: tok_eth
 
 
 ### Place orders
-9.`POST /api/v1/trade`     Used to place orders  
+9.`POST /api/v1/trade` Used to place orders  
 Request frequency 20 times/2s
 
 #### Example
@@ -388,7 +388,7 @@ openTok		|Integer	|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
 
 
 ### Batch trade
-10.`POST /api/v1/batchTrade`   Used to batch trade  
+10.`POST /api/v1/batchTrade` Used to batch trade  
 Request frequency 20 times/2s
 
 #### Example
@@ -415,7 +415,7 @@ openTok	|Integer	|Optional	|Using TOK to pay for fees（1 yes, 0 no，defult）
 orders_data	|String	|Yes	|Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
 
 ### Cancel order
-11.`POST /api/v1/cancelEntrust`   Used to cancel orders  
+11.`POST /api/v1/cancelEntrust` Used to cancel orders  
 Request frequency 20 times/2s
 
 #### Example
@@ -463,7 +463,7 @@ order_ids	|String	|yes	|Order Ids，Ex：[181114210459002003,181114210459001083]
 
 
 ### Get orders info
-13.`POST /api/v1/order/orders`     Used to get order information in batch  
+13.`POST /api/v1/order/orders` Used to get order information in batch  
 Request frequency 20 times/2s
 
 #### Example
@@ -520,7 +520,7 @@ page	|Integer|yes	|Current page number
 pageSize	|Integer	|Yes	|number of orders returned per page, maximum 50
 
 ### Get order info
-14.`POST /api/v1/order/orderInfo`     Used to get specific order info  
+14.`POST /api/v1/order/orderInfo` Used to get specific order info  
 Request frequency 20 times/2s
 
 #### Example
