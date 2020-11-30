@@ -306,8 +306,9 @@ hotMoney: available balance
 coldMoney: frozen balance
 coinCode: currency symbol
 Parameters
-Parameters	Type	Required	Description
-symbol	String	yes	Trading pair like: tok_eth
+Parameters	|Type	|Requires	|Description
+-|-|-|-
+symbol	|String	|yes	|Trading pair like: tok_eth
 
 
 ### Place orders
@@ -324,12 +325,13 @@ result:	     true means order placed successfully
 data:       order ID
 
 Parameters
-Parameters	Type	Requires	Description
-symbol	String	Yes	Ex: tok_eth
-type	String	Yes	order type: limit order(1 buy/2 sell) 
-entrustPrice	Double	Yes	order price
-entrustCount	Double	Yes	order amount
-openTok	Integer	Optional	Using Tok to pay for fees（1 yes; 0 no，defult）
+Parameters	|Type	|Requires	|Description
+-|-|-|-
+symbol	|String	|Yes	||Ex: tok_eth
+type	|String	|Yes	|order type: limit order(1 buy/2 sell) 
+entrustPrice	|Double	|Yes	|order price
+entrustCount	|Double	|Yes	|order amount
+openTok		|Integer	|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
 
 
 ### Batch trade
@@ -365,8 +367,9 @@ Response Details
 result :     true means order cancelled successfully, wait to be processed；false means fail to cancel order
 code:      error code
 Parameters
-Parameters	Type	Requires	Description
-order_id	String	Yes	Order ID
+Parameters	|Type	|Requires	|Description
+-|-|-|-
+order_id	|String	Yes	|Order ID
 
 ### Batch cancel
 12.POST /api/v1/batchCancel    Used to batch cancel
@@ -383,10 +386,10 @@ result :     true means order cancelled successfully, wait to be processed；fal
 code:      error code
 
 Parameters
-Parameters	Type	Required	Description
-symbol	String	yes	Ex: tok_eth
-order_ids	String	yes	Order Ids，Ex：[181114210459002003,181114210459001083]
-Maximum number is 5 
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|yes	|Ex: tok_eth
+order_ids	|String	|yes	|Order Ids，Ex：[181114210459002003,181114210459001083] Maximum number is 5 
 
 
 ### Get orders info
@@ -433,11 +436,12 @@ type:			order type：limit order(1 buy/2 sell)
 result:			true means request successfully handled
 total:			record numbers
 Parameters
-Parameters	Type	Required	Description
-symbol	String	Yes	Ex: tok_eth
-status	Integer	Yes	query status: 0 for unfilled orders, 1 for filled orders（maximum 10）
-page	Integer	yes	Current page number
-pageSize	Integer	Yes	number of orders returned per page, maximum 50
+Parameters	|Type	|Required	|Description
+-|-|-|-
+symbol	|String	|Yes	|Ex: tok_eth
+status	|Integer|Yes	|query status: 0 for unfilled orders, 1 for filled orders（maximum 10）
+page	|Integer|yes	|Current page number
+pageSize	|Integer	|Yes	|number of orders returned per page, maximum 50
 
 ### Get order info
 14.POST /api/v1/order/orderInfo     Used to get specific order info
