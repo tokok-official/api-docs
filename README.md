@@ -2,6 +2,7 @@
 API interface documentation
 
 
+
 ## Enable API
 
 ‘api_key’ is the users’ access key provided by TOKOK, ‘secretKey’ is used to request parameter signature. To get api_key and secretKey, go to Account center- Security center and click Create API Key.
@@ -20,20 +21,17 @@ ACCESS-SIGN- base64 encoded signature
 ACCESS-TIMESTAMP- the time at which you make the request. Unix timestamp format decimal in seconds (Ex：1543057116)
 
 ## How to sign
-All parameters submitted by users, ACCESS-KEY and ACCESS-TIMESTAMP must to be signed.
-
-The parameters must be re-ordered alphabetically according to the initials of the parameter name.
-
-For example, 
-ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6
-ACCESS-TIMESTAMP=1543057116
-
-If the parameters are
-string[] parameters={"symbol=tok_eth","type=1","entrustPrice=680","entrustCount=100"}; 
-
+All parameters submitted by users, ACCESS-KEY and ACCESS-TIMESTAMP must to be signed.  
+The parameters must be re-ordered alphabetically according to the initials of the parameter name.  
+For example,  
+ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6  
+ACCESS-TIMESTAMP=1543057116  
+If the parameters are  
+string[] parameters={"symbol=tok_eth","type=1","entrustPrice=680","entrustCount=100"};  
 The result string is
 
 ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entrustCount=100&entrustPrice=1.03&symbol=tok_eth&type=1  
+
 ‘secretKey’ is required to generate HMAC SHA256 signature. Use HMAC SHA256 encryption function to sign the string. Pass the encrypted string, which is base64 encoded, to ‘ACCESS-SIGN’ parameter.
 
 ## REST API Reference
