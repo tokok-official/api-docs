@@ -41,6 +41,7 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 'secretKey' is required to generate HMAC SHA256 signature. Use HMAC SHA256 encryption function to sign the string. Pass the encrypted string, which is base64 encoded, to 'ACCESS-SIGN' parameter.
 
 <br>
+
 ## REST API Reference
 
 ## Price API
