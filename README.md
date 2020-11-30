@@ -265,6 +265,7 @@ quoteAsset： quote currency
 quoteAssetPrecision：decimal number of quote currency
 
 <br>
+
 ## Trade API
 Place orders on exchange
 
