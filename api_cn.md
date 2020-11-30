@@ -418,7 +418,7 @@ error_code: 下单失败代码
 参数名|参数类型|必填|描述
 -|-|-|-
 symbol		|String	|是	|币对如tok_eth
-type		|String	|是	||买卖类型：限价单(1 买/2 卖) 
+type		|String	|是	|买卖类型：限价单(1 买/2 卖) 
 openTok		|Integer|否	|是否用TOK抵扣交易手续费（1 是 0 否，默认值）
 orders_data	|String	|是	|示例：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]最大下单量为5，price和amount参数参考trade接口中的说明，最终买卖类型由orders_data 中type 为准，如orders_data不设定type 则由上面type设置为准。
 
