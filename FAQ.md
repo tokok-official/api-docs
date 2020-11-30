@@ -1,7 +1,7 @@
 
 # 常见问题
 
-## 验签问题
+## -验签问题
 
 ### 1.为什么提示缺少api_key（code为84006）？
 请核对请求头中包含ACCESS-KEY
@@ -14,6 +14,7 @@
 
 ### 4.为什么签名认证总返回签名错误（code为84004）？
 签名不正确导致的:
+
 1)可以参考postman中实现，接口文件在[API.postman_collection.json](https://github.com/tokok-official/api-docs/blob/main/API.postman_collection.json)
 
 2)如果是自己编写签名函数，请务必一步步地参照如下描述：
