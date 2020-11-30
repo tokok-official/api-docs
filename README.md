@@ -50,10 +50,11 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 1.`Get /api/v1/tickers` Used to get price tickers for all markets.
 URL https://www.tokok.com/api/v1/tickers
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/tickers
-#### Response
+# Response
 {
 	"timestamp":1534755107946,
 	"ticker":[{
@@ -74,9 +75,10 @@ GET https://www.tokok.com/api/v1/tickers
 		"vol":"10532696.39199642"
 	}]
 }
-
+```
 Response Details
-
+#### Example
+```javascript
 timestamp: server time for returned data
 symbol: trading pair
 buy: bid price
@@ -85,14 +87,16 @@ last: the price at which the last order executed
 low: lowest trade price of the last 24 hours
 sell: ask price
 vol: trading volume of the last 24 hours
+```
 
 2.`Get /api/v1/ticker`   Used to get the current tick values for a market.
 URL https://www.tokok.com/api/v1/ticker?symbol=tok_eth
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/ticker?symbol=tok_eth
-#### Response
+# Response
 {
 	"timestamp":1534755107946,
 	"ticker":{
@@ -104,7 +108,10 @@ GET https://www.tokok.com/api/v1/ticker?symbol=tok_eth
 		"vol":"10532696.39199642"
 	}
 }
+```
 Response Details
+
+```javascript
 timestamp: server time for returned data
 buy: bid price
 high: highest trade price of the last 24 hours 
@@ -112,20 +119,22 @@ last: the price at which the last order executed
 low: lowest trade price of the last 24 hours
 sell: ask price
 vol: trading volume of the last 24 hours
+```
 
 Parameters
 Parameters|Type|Required|Description
 -|-|-|-
 symbol	|String	|Yes	|Ex: tok_eth
 
-
 ### Get market depth
 3.`Get /api/v1/depth` Used to get market depth of a symbol
 URL https://www.tokok.com/api/v1/depth?symbol=tok_eth
-Example
-#### Request
+
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/depth?symbol=tok_eth
-#### Response
+# Response
 {
 	"asks": [
 		["0.159","111"],
@@ -139,9 +148,12 @@ GET https://www.tokok.com/api/v1/depth?symbol=tok_eth
 		["0.158","100"]	
 	]
 }
+```
 Response Details
+```
 asks : ask array [[price，volume],··· ] 
 bids : bid array [[price，volume],··· ]
+```
 
 Parameters
 Parameters	|Type	|Required	|Description
@@ -153,10 +165,12 @@ size	|Integer|Optional(defult 50)	|value: 1-50
 ### Get recent trades
 4.`Get /api/v1/trades` Get recently 50 trades for a symbol
 URL https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
-Example
-#### Request
+
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
-#### Response
+# Response
 [
 	{
 		"timestamp": 1367130137000,
@@ -171,6 +185,7 @@ GET https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
 		"side": "sell"
 	}
 ]
+```
 Response Details
 timestamp: time
 price: price
@@ -188,10 +203,11 @@ size	|Integer	|Optional	|Ex：50
 5.`Get /api/v1/kline` Get candlestick data
 URL https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
-#### Response
+# Response
 [
     [
         "1417536000000",
@@ -210,7 +226,9 @@ GET https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
         "83850.06"
     ],
 ]
+```
 Response Details
+```javascript
 [
 	"1417536000000",	timestamp
 	"2370.16",	opening
@@ -219,7 +237,7 @@ Response Details
 	“2367.37",	closing
 	"17259.83"	volume
 ]
-
+```
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
@@ -230,14 +248,15 @@ size	|Integer	|Optional	|Limit the amount of data returned
 
 type 	1min/5min/15min/30min/60min/1day/1week/1mon
 
-### Get exchange info  
+### Get exchange info
 6.`Get /api/v1/exchangeInfo` Used to get info of a symbol
 URL https://www.tokok.com/api/v1/exchangeInfo
 
-Example
-##### Request
+#### Example
+```javascript
+# Request
 GET https://www.tokok.com/api/v1/exchangeInfo
-##### Response
+# Response
 [
 	{
         	"symbol": "eth_btc",
@@ -256,13 +275,17 @@ GET https://www.tokok.com/api/v1/exchangeInfo
 		"quoteAssetPrecision": 8
 	}
 ]
+```
 Response Details
+
+```javascript
 symbol: trading pair 
 status: status （At present, only status is in trading）
 baseAsset: base currency 
 baseAssetPrecision: decimal number of base currency 
 quoteAsset： quote currency
 quoteAssetPrecision：decimal number of quote currency
+```
 
 <br>
 
@@ -273,10 +296,11 @@ Place orders on exchange
 7.`POST /api/v1/accounts` Used to get user account info for all funds
 URL https://www.tokok.com/api/v1/accounts  Request frequency 6 times/2s
 
-Example
-##### Request
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/accounts
-##### Response
+# Response
 {
     "data": [
         {
@@ -292,11 +316,13 @@ POST https://www.tokok.com/api/v1/accounts
     ],
     "result": true
 }
+```
 Response Details
+```javascript
 hotMoney: available fund
 coldMoney: frozen fund
 coinCode: currency symbol
-
+```
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
@@ -306,10 +332,11 @@ N/A
 8.`POST /api/v1/singleAccount` Used to get account info for one pair
 URL https://www.tokok.com/api/v1/singleAccount          Request frequency 6 times/2s 
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/singleAccount
-#### Response
+# Response
 {
     "data": [
         {
@@ -325,10 +352,13 @@ POST https://www.tokok.com/api/v1/singleAccount
     ],
     "result": true
 }
+```
 Response Details
+```javascript
 hotMoney: available balance
 coldMoney: frozen balance
 coinCode: currency symbol
+```
 
 Parameters
 Parameters	|Type	|Requires	|Description
@@ -340,14 +370,18 @@ symbol	|String	|yes	|Trading pair like: tok_eth
 9.`POST /api/v1/trade`     Used to place orders
 URL https://www.tokok.com/api/v1/trade  Request frequency 20 times/2s
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/trade
-#### Response
+# Response
 {"result":true,"data":"181114210709001779"}
+```
 Response details
+```javascript
 result:	     true means order placed successfully
 data:       order ID
+```
 
 Parameters
 Parameters	|Type	|Requires	|Description
@@ -362,15 +396,22 @@ openTok		|Integer	|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
 ### Batch trade
 10.`POST /api/v1/batchTrade`   Used to batch trade 
 URL https://www.tokok.com/api/v1/batchTrade  Request frequency 20 times/2s
-Example
-#### Request
+
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/batchTrade
-#### Response
+# Response
 {"result":true,"data":[{"order_id":"181115095219001580"},{"order_id":"181115095219002234"}]}
+```
+
 Response Details
+```javascript
 result:     true means order successfully placed(return true if any one order is placed successfully）
 order_id:    order ID，if fail to place order: order_id is -1
 error_code:  error code
+```
+
 Parameters
 Parameters	Type	Required	Description
 symbol	String	yes	Ex: tok_eth
@@ -382,15 +423,21 @@ max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. 
 ### Cancel order 
 11.`POST /api/v1/cancelEntrust`   Used to cancel orders
 URL https://www.tokok.com/api/v1/cancelEntrust  Request frequency 20 times/2s
-Example
-#### Request
+
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/cancelEntrust
-#### Response
+# Response
 {"result":true,"code":0}
 
-Response Details 
+```
+Response Details
+```javascript
 result :     true means order cancelled successfully, wait to be processed；false means fail to cancel order
 code:      error code
+```
+
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
@@ -400,15 +447,19 @@ order_id	|String	Yes	|Order ID
 12.`POST /api/v1/batchCancel`    Used to batch cancel
 URL https://www.tokok.com/api/v1/batchCancel     Request frequency 20 times/2s
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/batchCancel 
-#### Response
+# Response
 {"result":true,"code":0}
+```
 
 Response Details
+```javascript
 result :     true means order cancelled successfully, wait to be processed；false means fail to cancel order
 code:      error code
+```
 
 Parameters
 Parameters	|Type	|Required	|Description
@@ -421,10 +472,11 @@ order_ids	|String	|yes	|Order Ids，Ex：[181114210459002003,181114210459001083]
 13.`POST /api/v1/order/orders`     Used to get order information in batch
 URL https://www.tokok.com/api/v1/order/orders       Request frequency 20 times/2s
 
-Example
-#### Request
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/order/orders
-#### Response
+# Response
 {
 	"data": [
 	{
@@ -448,7 +500,10 @@ POST https://www.tokok.com/api/v1/order/orders
 	"result": true,
 	"total": 3
 }
+```
+
 Response Details
+```javascript
 data: 			order info
 entrustCount:		order amount
 processedPrice:		average transaction price
@@ -460,6 +515,8 @@ status: 		0:unfilled 1:partially filled 2: fully filled 3:partially cancelled 4:
 type:			order type：limit order(1 buy/2 sell)
 result:			true means request successfully handled
 total:			record numbers
+```
+
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
@@ -471,10 +528,12 @@ pageSize	|Integer	|Yes	|number of orders returned per page, maximum 50
 ### Get order info
 14.`POST /api/v1/order/orderInfo`     Used to get specific order info
 URL https://www.tokok.com/api/v1/order/orderInfo         Request frequency 20 times/2s
-Example
-#### Request
+
+#### Example
+```javascript
+# Request
 POST https://www.tokok.com/api/v1/order/orderInfo
-#### Response
+# Response
 {
     "result": true,
     "data": {
@@ -492,9 +551,10 @@ POST https://www.tokok.com/api/v1/order/orderInfo
         "symbol": "TOK_ETH"
     }
 }
+```
 
 Response Details
-
+```javascript
 entrustCount:		order amount
 processedPrice:		average transation price
 entrustTime_long:	                order time
@@ -504,6 +564,7 @@ entrustPrice:		order price
 status: 		 0:unfilled 1:partially filled 2:fully filled 3:partially cancel 4:cancelled
 type:			order type：limit order (1 buy/2 sell)
 result:			true means request successfully handled
+```
 
 Parameters
 Parameters	|Type	|Requires	|Description
