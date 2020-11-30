@@ -34,9 +34,7 @@ ACCESS-TIMESTAMP=1543057116
 ```
 string[] parameters={"symbol=tok_eth","type=1","entrustPrice=1.03","entrustCount=100"};
 ```
-其次将排序好的各项参数使用&拼接。
-
-生成签名前字符串 
+其次将排序好的各项参数使用&拼接得到签名前字符串 
 ```
 ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entrustCount=100&entrustPrice=1.03&symbol=tok_eth&type=1
 ```
