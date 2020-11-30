@@ -28,7 +28,7 @@ ACCESS-TIMESTAMP=1543057116
 
 参数如下:
 ```
-string[] parameters={"symbol=tok_eth","type=1","entrustPrice=680","entrustCount=100"};
+string[] parameters={"symbol=tok_eth","type=1","entrustPrice=1.03","entrustCount=100"};
 ```
 生成待签名的字符串 
 ```
