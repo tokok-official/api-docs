@@ -48,7 +48,6 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 
 ### Get ticker
 1.`Get /api/v1/tickers` Used to get price tickers for all markets.  
-URL https://www.tokok.com/api/v1/tickers
 
 #### Example
 ```javascript
@@ -90,7 +89,6 @@ vol: trading volume of the last 24 hours
 ```
 
 2.`Get /api/v1/ticker`   Used to get the current tick values for a market.  
-URL https://www.tokok.com/api/v1/ticker?symbol=tok_eth
 
 #### Example
 ```javascript
@@ -128,7 +126,6 @@ symbol	|String	|Yes	|Ex: tok_eth
 
 ### Get market depth
 3.`Get /api/v1/depth` Used to get market depth of a symbol  
-URL https://www.tokok.com/api/v1/depth?symbol=tok_eth
 
 #### Example
 ```javascript
@@ -164,7 +161,6 @@ size	|Integer|Optional(defult 50)	|value: 1-50
 
 ### Get recent trades
 4.`Get /api/v1/trades` Get recently 50 trades for a symbol  
-URL https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
 
 #### Example
 ```javascript
@@ -201,7 +197,6 @@ size	|Integer	|Optional	|Ex：50
 
 ### Get K line
 5.`Get /api/v1/kline` Get candlestick data  
-URL https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
 
 #### Example
 ```javascript
@@ -250,7 +245,6 @@ type 	1min/5min/15min/30min/60min/1day/1week/1mon
 
 ### Get exchange info
 6.`Get /api/v1/exchangeInfo` Used to get info of a symbol  
-URL https://www.tokok.com/api/v1/exchangeInfo
 
 #### Example
 ```javascript
@@ -294,7 +288,7 @@ Place orders on exchange
 
 ### Get user info
 7.`POST /api/v1/accounts` Used to get user account info for all funds  
-URL https://www.tokok.com/api/v1/accounts  Request frequency 6 times/2s
+Request frequency 6 times/2s
 
 #### Example
 ```javascript
@@ -330,7 +324,7 @@ N/A
 
 ### Get pair info
 8.`POST /api/v1/singleAccount` Used to get account info for one pair  
-URL https://www.tokok.com/api/v1/singleAccount          Request frequency 6 times/2s 
+Request frequency 6 times/2s 
 
 #### Example
 ```javascript
@@ -368,7 +362,7 @@ symbol	|String	|yes	|Trading pair like: tok_eth
 
 ### Place orders
 9.`POST /api/v1/trade`     Used to place orders  
-URL https://www.tokok.com/api/v1/trade  Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
@@ -395,7 +389,7 @@ openTok		|Integer	|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
 
 ### Batch trade
 10.`POST /api/v1/batchTrade`   Used to batch trade  
-URL https://www.tokok.com/api/v1/batchTrade  Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
@@ -422,7 +416,7 @@ orders_data	|String	|Yes	|Ex：[{"amount":"100","price":"0.02","type":1},{"amoun
 
 ### Cancel order
 11.`POST /api/v1/cancelEntrust`   Used to cancel orders  
-URL https://www.tokok.com/api/v1/cancelEntrust  Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
@@ -445,7 +439,7 @@ order_id	|String	Yes	|Order ID
 
 ### Batch cancel
 12.`POST /api/v1/batchCancel`    Used to batch cancel  
-URL https://www.tokok.com/api/v1/batchCancel     Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
@@ -470,7 +464,7 @@ order_ids	|String	|yes	|Order Ids，Ex：[181114210459002003,181114210459001083]
 
 ### Get orders info
 13.`POST /api/v1/order/orders`     Used to get order information in batch  
-URL https://www.tokok.com/api/v1/order/orders       Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
@@ -527,7 +521,7 @@ pageSize	|Integer	|Yes	|number of orders returned per page, maximum 50
 
 ### Get order info
 14.`POST /api/v1/order/orderInfo`     Used to get specific order info  
-URL https://www.tokok.com/api/v1/order/orderInfo         Request frequency 20 times/2s
+Request frequency 20 times/2s
 
 #### Example
 ```javascript
