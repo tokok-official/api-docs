@@ -418,8 +418,7 @@ Parameters	|Type	|Requires	|Description
 symbol	|String	|yes	|Ex: tok_eth
 type	|String	|yes	|order type: limit orders (1 buy/2 sell)
 openTok	|Integer	|Optional	|Using TOK to pay for fees（1 yes, 0 no，defult）
-orders_data	|String	|Yes	|Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]
-max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
+orders_data	|String	|Yes	|Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
 
 ### Cancel order
 11.`POST /api/v1/cancelEntrust`   Used to cancel orders
