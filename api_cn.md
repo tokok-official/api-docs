@@ -6,7 +6,7 @@
 用户的API权限在网站的安全中心->API处获取。点击设置，邮箱验证后即可获得，其中API Key是tokok提供给API用户的访问密钥，secretKey用于对请求参数签名的密钥。
 >注意： 请勿向任何人泄露这两个密钥，它们关乎您账号的安全。
 
-<br>
+<br/>
 
 ## 签名认证
 API 请求在通过 Internet 发送的过程中极有可能被篡改。为了确保请求未被更改，我们会要求用户在每个请求中带上签名（行情 API 除外），来校验参数或参数值在传输途中是否发生了更改。
@@ -44,6 +44,7 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 
 ### 行情接口
 1．`Get /api/v1/tickers`   获取全部交易对行情数据
+
 URL https://www.tokok.com/api/v1/tickers
 
 #### 示例
@@ -86,6 +87,7 @@ vol: 最近 24 小时成交量
 ```
 
 2．`Get /api/v1/ticker`   获取行情数据
+
 URL https://www.tokok.com/api/v1/ticker?symbol=tok_eth
 
 #### 示例
@@ -121,6 +123,7 @@ symbol	String	是	币对如tok_eth
 
 ### 深度接口
 3．`Get /api/v1/depth` 获取市场深度
+
 URL https://www.tokok.com/api/v1/depth?symbol=tok_eth
 
 #### 示例
@@ -153,7 +156,8 @@ size	Integer	否(默认50)	value: 1-50
 ```
 
 ### 最新成交记录接口
-4．Get /api/v1/trades 获取最新成交记录
+4．`Get /api/v1/trades` 获取最新成交记录
+
 URL https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
 
 #### 示例
@@ -190,6 +194,7 @@ size	Integer	否	如：50
 
 ### K线接口
 5．`Get /api/v1/kline` 获取K线数据
+
 URL https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
 
 #### 示例
@@ -239,6 +244,7 @@ type 	1min/5min/15min/30min/60min/1day/1week/1mon
 
 ### 交易对信息接口
 6．`Get /api/v1/exchangeInfo` 获取交易对信息
+
 URL https://www.tokok.com/api/v1/exchangeInfo
 
 #### 示例
@@ -282,6 +288,7 @@ quoteAssetPrecision：计价货币精度
 
 ### 币币账户信息
 7．`POST /api/v1/accounts` 获取用户所有账户信息
+
 URL https://www.tokok.com/api/v1/accounts  访问频率 6次/2秒  
 
 #### 示例
@@ -318,6 +325,7 @@ coinCode:币种代码
 
 ### 币对账户信息
 8．`POST /api/v1/singleAccount` 获取用户币对账户信息
+
 URL https://www.tokok.com/api/v1/singleAccount 访问频率 6次/2秒  
 
 #### 示例
@@ -354,6 +362,7 @@ symbol	|String	|是	|交易对，如tok_eth
 
 ### 下单交易
 9．`POST /api/v1/trade` 下单交易
+
 URL https://www.tokok.com/api/v1/trade  访问频率 20次/2秒
 
 #### 示例
@@ -379,6 +388,7 @@ openTok			|Integer|否	|是否用TOK抵扣交易手续费（1 是; 0 否，默�
 
 ### 批量下单
 10．`POST /api/v1/batchTrade` 批量下单
+
 URL https://www.tokok.com/api/v1/batchTrade 访问频率 20次/2秒
 
 #### 示例
@@ -405,6 +415,7 @@ orders_data	|String	|是	|示例：[{"amount":"100","price":"0.02","type":1},{"a
 
 ### 撤销订单
 11．`POST /api/v1/cancelEntrust` 撤销订单
+
 URL https://www.tokok.com/api/v1/cancelEntrust  访问频率 20次/2秒
 
 #### 示例
@@ -428,6 +439,7 @@ order_id	|String	|是	|订单流水号
 
 ### 批量撤销
 12．`POST /api/v1/batchCancel` 撤销订单
+
 URL https://www.tokok.com/api/v1/batchCancel 访问频率 20次/2秒
 #### 示例
 ```
@@ -452,6 +464,7 @@ order_ids	|String	|是	|订单流水号，如：[181114210459002003,181114210459
 
 ### 获取订单列表
 13．`POST /api/v1/order/orders` 获取当前与历史委托订单信息
+
 URL https://www.tokok.com/api/v1/order/orders 访问频率 20次/2秒
 
 #### 示例
@@ -508,6 +521,7 @@ pageSize	|Integer	|是	|每页数据条数，最多不超过50
 
 ### 获取订单详情
 14．`POST /api/v1/order/orderInfo`   获取用户的订单信息
+
 URL https://www.tokok.com/api/v1/order/orderInfo 访问频率 20次/2秒
 
 #### 示例
