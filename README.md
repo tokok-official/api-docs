@@ -38,10 +38,11 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 #### Get ticker
 1.Get /api/v1/tickers   Used to get price tickers for all markets.
 URL https://www.tokok.com/api/v1/tickers
+
 Example
-# Request
+#### Request
 GET https://www.tokok.com/api/v1/tickers
-# Response
+#### Response
 {
 	"timestamp":1534755107946,
 	"ticker":[{
@@ -74,10 +75,11 @@ vol: trading volume of the last 24 hours
 
 2.Get /api/v1/ticker   Used to get the current tick values for a market.
 URL https://www.tokok.com/api/v1/ticker?symbol=tok_eth
+
 Example
-# Request
+#### Request
 GET https://www.tokok.com/api/v1/ticker?symbol=tok_eth
-# Response
+#### Response
 {
 	"timestamp":1534755107946,
 	"ticker":{
@@ -103,13 +105,13 @@ Parameters	Type	Required	Description
 symbol	String	Yes	Ex: tok_eth
 
 
-#### Get market depth
+### Get market depth
 3.Get /api/v1/depth Used to get market depth of a symbol
 URL https://www.tokok.com/api/v1/depth?symbol=tok_eth
 Example
-# Request
+#### Request
 GET https://www.tokok.com/api/v1/depth?symbol=tok_eth
-# Response
+#### Response
 {
 	"asks": [
 		["0.159","111"],
@@ -132,13 +134,13 @@ symbol	String	Yes	Ex: tok_eth
 size	Integer	Optional(defult 50)	value: 1-50
 
 
-Get recent trades
+### Get recent trades
 4.Get /api/v1/trades Get recently 50 trades for a symbol
 URL https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
 Example
-# Request
+#### Request
 GET https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
-# Response
+#### Response
 [
 	{
 		"timestamp": 1367130137000,
@@ -164,13 +166,14 @@ symbol	String	Yes	Ex: tok_eth
 size	Integer	Optional	Ex：50
 
 
-Get K line
+### Get K line
 5.Get /api/v1/kline Get candlestick data
 URL https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
+
 Example
-# Request
+#### Request
 GET https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
-# Response
+#### Response
 [
     [
         "1417536000000",
@@ -206,13 +209,15 @@ size	Integer	Optional	Limit the amount of data returned
 
 
 type 	1min/5min/15min/30min/60min/1day/1week/1mon
-Get  exchange info  
+
+### Get exchange info  
 6.Get /api/v1/exchangeInfo Used to get info of a symbol
 URL https://www.tokok.com/api/v1/exchangeInfo
+
 Example
-# Request
+##### Request
 GET https://www.tokok.com/api/v1/exchangeInfo
-# Response
+##### Response
 [
 	{
         	"symbol": "eth_btc",
@@ -239,15 +244,17 @@ baseAssetPrecision: decimal number of base currency
 quoteAsset： quote currency
 quoteAssetPrecision：decimal number of quote currency
 
-Trade API
+## Trade API
 Place orders on exchange
-Get user info
+
+### Get user info
 7.POST /api/v1/accounts     Used to get user account info for all funds
 URL https://www.tokok.com/api/v1/accounts  Request frequency 6 times/2s
+
 Example
-# Request
+##### Request
 POST https://www.tokok.com/api/v1/accounts
-# Response
+##### Response
 {
     "data": [
         {
@@ -271,13 +278,14 @@ Parameters
 Parameters	Type	Required	Description
 N/A
 
-Get pair info
+### Get pair info
 8.POST /api/v1/singleAccount     Used to get account info for one pair
 URL https://www.tokok.com/api/v1/singleAccount          Request frequency 6 times/2s 
+
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/singleAccount
-# Response
+#### Response
 {
     "data": [
         {
@@ -302,13 +310,14 @@ Parameters	Type	Required	Description
 symbol	String	yes	Trading pair like: tok_eth
 
 
-Place orders
+### Place orders
 9.POST /api/v1/trade     Used to place orders
 URL https://www.tokok.com/api/v1/trade  Request frequency 20 times/2s
+
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/trade
-# Response
+#### Response
 {"result":true,"data":"181114210709001779"}
 Response details
 result:	     true means order placed successfully
@@ -323,13 +332,13 @@ entrustCount	Double	Yes	order amount
 openTok	Integer	Optional	Using Tok to pay for fees（1 yes; 0 no，defult）
 
 
-Batch trade
+### Batch trade
 10.POST /api/v1/batchTrade   Used to batch trade 
 URL https://www.tokok.com/api/v1/batchTrade  Request frequency 20 times/2s
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/batchTrade
-# Response
+#### Response
 {"result":true,"data":[{"order_id":"181115095219001580"},{"order_id":"181115095219002234"}]}
 Response Details
 result:     true means order successfully placed(return true if any one order is placed successfully）
@@ -343,13 +352,13 @@ openTok	Integer	Optional	Using TOK to pay for fees（1 yes, 0 no，defult）
 orders_data	String	Yes	Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]
 max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
 
-Cancel order 
+### Cancel order 
 11.POST /api/v1/cancelEntrust   Used to cancel orders
 URL https://www.tokok.com/api/v1/cancelEntrust  Request frequency 20 times/2s
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/cancelEntrust
-# Response
+#### Response
 {"result":true,"code":0}
 
 Response Details 
@@ -359,13 +368,14 @@ Parameters
 Parameters	Type	Requires	Description
 order_id	String	Yes	Order ID
 
-Batch cancel
+### Batch cancel
 12.POST /api/v1/batchCancel    Used to batch cancel
 URL https://www.tokok.com/api/v1/batchCancel     Request frequency 20 times/2s
+
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/batchCancel 
-# Response
+#### Response
 {"result":true,"code":0}
 
 Response Details
@@ -379,13 +389,14 @@ order_ids	String	yes	Order Ids，Ex：[181114210459002003,181114210459001083]
 Maximum number is 5 
 
 
-Get orders info
+### Get orders info
 13.POST /api/v1/order/orders     Used to get order information in batch
 URL https://www.tokok.com/api/v1/order/orders       Request frequency 20 times/2s
+
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/order/orders
-# Response
+#### Response
 {
 	"data": [
 	{
@@ -428,13 +439,13 @@ status	Integer	Yes	query status: 0 for unfilled orders, 1 for filled orders（ma
 page	Integer	yes	Current page number
 pageSize	Integer	Yes	number of orders returned per page, maximum 50
 
-Get order info
+### Get order info
 14.POST /api/v1/order/orderInfo     Used to get specific order info
 URL https://www.tokok.com/api/v1/order/orderInfo         Request frequency 20 times/2s
 Example
-# Request
+#### Request
 POST https://www.tokok.com/api/v1/order/orderInfo
-# Response
+#### Response
 {
     "result": true,
     "data": {
@@ -452,6 +463,7 @@ POST https://www.tokok.com/api/v1/order/orderInfo
         "symbol": "TOK_ETH"
     }
 }
+
 Response Details
 
 entrustCount:		order amount
@@ -463,11 +475,12 @@ entrustPrice:		order price
 status: 		 0:unfilled 1:partially filled 2:fully filled 3:partially cancel 4:cancelled
 type:			order type：limit order (1 buy/2 sell)
 result:			true means request successfully handled
+
 Parameters
 Parameters	Type	Requires	Description
 order_id	String	Yes	order ID
 
-Error code
+## Error code
 Error code	Description
 80101	Request frequency too high
 80102	This IP is not allowed to access
