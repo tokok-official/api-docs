@@ -1,0 +1,1044 @@
+{
+	"info": {
+		"_postman_id": "cee2e6e4-0304-4a7e-bce3-0f2e96614464",
+		"name": "API接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "行情接口",
+			"item": [
+				{
+					"name": "行情接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/tickers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tickers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "行情接口2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/ticker?symbol=tok_eth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ticker"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "tok_eth"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "深度接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/depth?symbol=tok_eth&size=50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"depth"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "tok_eth"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "最新成交接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/trades?symbol=tok_eth&size=50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "tok_eth"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "K线接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/kline?symbol=tok_eth&size=50&type=5min",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"kline"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "tok_eth"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								},
+								{
+									"key": "type",
+									"value": "5min"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "交易对信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/exchangeInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"exchangeInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "交易接口",
+			"item": [
+				{
+					"name": "下单交易",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "48ec3395-5a1a-41db-b0c6-7d409139feab",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"console.log(kvStr);",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6a3ee67-85e3-410b-89f2-bf757abe48e0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "symbol",
+									"value": "AMB_USDT",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "entrustPrice",
+									"value": "0.003220",
+									"type": "text"
+								},
+								{
+									"key": "entrustCount",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "openTok",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/trade",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量下单",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b24a4713-7ad4-49f6-be15-42ea83f74081",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a5b8570-945c-4cbd-afc2-bde8a0aae3b4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "symbol",
+									"value": "tok_eth",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "openTok",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "orders_data",
+									"value": "[{\"amount\":\"100000\",\"price\":\"2\",\"type\":1},{\"amount\":\"200\",\"price\":\"0.03\",\"type\":1}]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/batchTrade",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"batchTrade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "撤销订单",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e7cfb38f-60bb-46f2-85e6-18f34314ae82",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb1c4763-ba0e-4079-bd34-714fcda768b3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "order_id",
+									"value": "181123171305173001804",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/cancelEntrust",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cancelEntrust"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "批量撤单",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c68cd082-e5eb-4071-b34a-5d52be51f0c6",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "64f0442a-7478-46e5-833d-55b5bba63a2e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "symbol",
+									"value": "tok_eth",
+									"type": "text"
+								},
+								{
+									"key": "order_ids",
+									"value": "[181123165647592001072]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/batchCancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"batchCancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "订单列表",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eec22a2e-5afc-402e-ae93-475bb53d08f1",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df7f7db8-12ff-4f8a-a5ea-2dc1be372e7d",
+								"exec": [
+									"var data  = JSON.parse(responseBody).data;",
+									"if(data){",
+									"    var entrustTrade = data[0];",
+									"    var entrustNum = entrustTrade.entrustNum;",
+									"",
+									"    pm.environment.set(\"entrustNum\", entrustNum);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "symbol",
+									"value": "tok_eth",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pageSize",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/order/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "订单信息",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6eb1939c-28cc-48ea-b4c2-f4500e2e1712",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "order_id",
+									"value": "181123165344835001227",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/order/orderInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"orderInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "币对账户信息",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e7fd8bff-b321-43d2-81fe-ce02ee1028ef",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "symbol",
+									"value": "tok_eth",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/singleAccount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"singleAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "所有账户信息",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8bb3584b-1d09-43fc-90a2-2a7f63826751",
+								"exec": [
+									"(function () {",
+									"   ",
+									"    var data = request.data;",
+									"",
+									"    var api_key = pm.environment.get('api_key');",
+									"    var secretKey = pm.environment.get('secretKey');",
+									"    var timestamp = Math.round(new Date().getTime());",
+									"    pm.environment.set(\"timestamp\", timestamp);",
+									"    data['ACCESS-KEY'] = api_key;",
+									"    data['ACCESS-TIMESTAMP'] = timestamp;",
+									"",
+									"    var sign = calcSign(data, api_key,secretKey,timestamp);",
+									"    pm.environment.set('sign', sign);",
+									"})();",
+									"function calcSign(data, api_key, secretKey,timestamp) {",
+									"    delete data['sign'];",
+									"",
+									"    var keys = [];",
+									"    for(var k in data) {",
+									"        keys.push(k);",
+									"    }",
+									"    ",
+									"    keys.sort();",
+									"",
+									"    var kv = [];",
+									"    for (var v of keys) {",
+									"        kv.push(v + '=' + data[v]);",
+									"    }",
+									"    var kvStr = kv.join('&');",
+									"",
+									"    var sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(kvStr, secretKey));",
+									"    return sign;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "ACCESS-KEY",
+								"type": "text",
+								"value": "{{api_key}}"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"type": "text",
+								"value": "{{timestamp}}"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"type": "text",
+								"value": "{{sign}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
