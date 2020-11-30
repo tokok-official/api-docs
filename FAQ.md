@@ -4,17 +4,17 @@
 ## 验签问题
 
 ### 1.为什么提示缺少api_key（code为84006）？
-请确保请求头中包含ACCESS-KEY
+请核对请求头中包含ACCESS-KEY
 
 ### 2.为什么提示缺少签名（code为84002）？
-请确保请求头中包含ACCESS-SIGN
+请核对请求头中包含ACCESS-SIGN
 
 ### 3.为什么提示缺少时间戳（code为84001）？
-请确保请求头中包含ACCESS-TIMESTAMP
+请核对请求头中包含ACCESS-TIMESTAMP
 
 ### 4.为什么签名认证总返回签名错误（code为84004）？
 签名不正确导致的:
-1)可以参考postman中实现，接口文件请先参考
+1)可以参考postman中实现，接口文件在[API.postman_collection.json](https://github.com/tokok-official/api-docs/blob/main/API.postman_collection.json)
 
 2)如果是自己编写签名函数，请务必一步步地参照如下描述：
 
@@ -58,6 +58,8 @@ ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entr
 ```
 
 (4) 签名结果（ACCESS-SIGN）的长度应为44位，如：S5KQGc3tZt6AXgdJqVN7dTzyFRBVKyRAUrcDC+FzjA4=，如果长度为88位，是对签名结果进行了16进制编码导致。
+
+<br/>
 
 ## 限速问题
 
