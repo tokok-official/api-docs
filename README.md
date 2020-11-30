@@ -482,7 +482,7 @@ order_id	String	Yes	order ID
 
 ## Error code
 Error code	Description
-80101	Request frequency too high
+80101	Request frequency too high 
 80102	This IP is not allowed to access
 82101	No account information
 82102	Fail to get pair info
@@ -491,7 +491,7 @@ Error code	Description
 83103	Account blocked
 83104	Account is prohibited from trading
 83005	Trading pair can not be null
-83006	Trading pair format error
+83006	Trading pair format error 
 83007	Incorrect order type
 83008	Incorrect order price
 83009	Incorrect order amount
