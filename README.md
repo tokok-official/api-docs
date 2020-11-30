@@ -477,16 +477,17 @@ type:			order type：limit order (1 buy/2 sell)
 result:			true means request successfully handled
 
 Parameters
-Parameters	Type	Requires	Description
-order_id	String	Yes	order ID
+Parameters	|Type	|Requires	|Description
+-|-|-|-
+order_id	|String	|Yes	|order ID
 
 ## Error code
 
-|Error code | Description|
-|:-|:-|
-|80101	|Request frequency too high|
-|80102	|This IP is not allowed to access|
-|82101	|No account information|
+Error code | Description
+:-|:-
+80101	|Request frequency too high
+80102	|This IP is not allowed to access
+82101	|No account information
 82102	|Fail to get pair info
 83001	|Please enable SMS or GOOGLE authentication
 83002	|Please enable Real-name authentication
