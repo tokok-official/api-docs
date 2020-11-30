@@ -78,14 +78,14 @@ GET https://www.tokok.com/api/v1/tickers
 Response Details
 #### Example
 ```javascript
-timestamp: server time for returned data
-symbol: trading pair
-buy: bid price
-high: highest trade price of the last 24 hours 
-last: the price at which the last order executed
-low: lowest trade price of the last 24 hours
-sell: ask price
-vol: trading volume of the last 24 hours
+timestamp: 	server time for returned data
+symbol: 	trading pair
+buy: 		bid price
+high: 		highest trade price of the last 24 hours 
+last: 		the price at which the last order executed
+low: 		lowest trade price of the last 24 hours
+sell: 		ask price
+vol: 		trading volume of the last 24 hours
 ```
 
 2.`Get /api/v1/ticker` Used to get the current tick values for a market.  
@@ -110,13 +110,13 @@ GET https://www.tokok.com/api/v1/ticker?symbol=tok_eth
 Response Details
 
 ```javascript
-timestamp: server time for returned data
-buy: bid price
-high: highest trade price of the last 24 hours 
-last: the price at which the last order executed
-low: lowest trade price of the last 24 hours
-sell: ask price
-vol: trading volume of the last 24 hours
+timestamp: 	server time for returned data
+buy: 		bid price
+high: 		highest trade price of the last 24 hours 
+last: 		the price at which the last order executed
+low: 		lowest trade price of the last 24 hours
+sell: 		ask price
+vol: 		trading volume of the last 24 hours
 ```
 
 Parameters
@@ -153,10 +153,10 @@ bids : bid array [[price，volume],··· ]
 ```
 
 Parameters
-Parameters	|Type	|Required	|Description
+Parameters	|Type	|Required		|Description
 -|-|-|-
-symbol	|String	|Yes	|Ex: tok_eth
-size	|Integer|Optional(defult 50)	|value: 1-50
+symbol		|String	|Yes			|Ex: tok_eth
+size		|Integer|Optional(defult 50)	|value: 1-50
 
 
 ### Get recent trades
@@ -183,16 +183,16 @@ GET https://www.tokok.com/api/v1/trades?symbol=tok_eth&size=50
 ]
 ```
 Response Details
-timestamp: time
-price: price
-amount: amount
-side: buy/sell 'sell' or 'buy' 
+timestamp:	time
+price: 		price
+amount: 	amount
+side: 		buy/sell 'sell' or 'buy' 
 
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
-symbol	|String	|Yes	|Ex: tok_eth
-size	|Integer	|Optional	|Ex：50
+symbol		|String	|Yes		|Ex: tok_eth
+size		|Integer|Optional	|Ex：50
 
 
 ### Get K line
@@ -225,7 +225,7 @@ GET https://www.tokok.com/api/v1/kline?symbol=tok_eth&size=20&type=1min
 Response Details
 ```javascript
 [
-	"1417536000000",	timestamp
+	"1417536000000",timestamp
 	"2370.16",	opening
 	"2380",		high
 	"2352",		low
@@ -236,9 +236,9 @@ Response Details
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
-symbol	|String	|Yes	|Ex: tok_eth
-type	|String	|Yes	
-size	|Integer	|Optional	|Limit the amount of data returned
+symbol		|String	|Yes		|Ex: tok_eth
+type		|String	|Yes	
+size		|Integer|Optional	|Limit the amount of data returned
 
 
 type 	1min/5min/15min/30min/60min/1day/1week/1mon
@@ -273,12 +273,12 @@ GET https://www.tokok.com/api/v1/exchangeInfo
 Response Details
 
 ```javascript
-symbol: trading pair 
-status: status （At present, only status is in trading）
-baseAsset: base currency 
-baseAssetPrecision: decimal number of base currency 
-quoteAsset： quote currency
-quoteAssetPrecision：decimal number of quote currency
+symbol: 	trading pair 
+status: 	status （At present, only status is in trading）
+baseAsset: 	base currency 
+baseAssetPrecision:	decimal number of base currency 
+quoteAsset:		quote currency
+quoteAssetPrecision:	decimal number of quote currency
 ```
 
 <br>
@@ -313,9 +313,9 @@ POST https://www.tokok.com/api/v1/accounts
 ```
 Response Details
 ```javascript
-hotMoney: available fund
-coldMoney: frozen fund
-coinCode: currency symbol
+hotMoney: 	available fund
+coldMoney: 	frozen fund
+coinCode: 	currency symbol
 ```
 Parameters
 Parameters	|Type	|Required	|Description
@@ -349,15 +349,15 @@ POST https://www.tokok.com/api/v1/singleAccount
 ```
 Response Details
 ```javascript
-hotMoney: available balance
-coldMoney: frozen balance
-coinCode: currency symbol
+hotMoney: 	available balance
+coldMoney: 	frozen balance
+coinCode: 	currency symbol
 ```
 
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
-symbol	|String	|yes	|Trading pair like: tok_eth
+symbol		|String	|yes		|Trading pair like: tok_eth
 
 
 ### Place orders
@@ -373,18 +373,18 @@ POST https://www.tokok.com/api/v1/trade
 ```
 Response details
 ```javascript
-result:	     true means order placed successfully
-data:       order ID
+result:	true means order placed successfully
+data:	order ID
 ```
 
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
-symbol	|String	|Yes	||Ex: tok_eth
-type	|String	|Yes	|order type: limit order(1 buy/2 sell) 
-entrustPrice	|Double	|Yes	|order price
-entrustCount	|Double	|Yes	|order amount
-openTok		|Integer	|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
+symbol		|String	|Yes		|Ex: tok_eth
+type		|String	|Yes		|order type: limit order(1 buy/2 sell) 
+entrustPrice	|Double	|Yes		|order price
+entrustCount	|Double	|Yes		|order amount
+openTok		|Integer|Optional	|Using Tok to pay for fees（1 yes; 0 no，defult）
 
 
 ### Batch trade
@@ -401,18 +401,18 @@ POST https://www.tokok.com/api/v1/batchTrade
 
 Response Details
 ```javascript
-result:     true means order successfully placed(return true if any one order is placed successfully）
-order_id:    order ID，if fail to place order: order_id is -1
-error_code:  error code
+result:		true means order successfully placed(return true if any one order is placed successfully）
+order_id:   	order ID，if fail to place order: order_id is -1
+error_code:  	error code
 ```
 
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
-symbol	|String	|yes	|Ex: tok_eth
-type	|String	|yes	|order type: limit orders (1 buy/2 sell)
-openTok	|Integer	|Optional	|Using TOK to pay for fees（1 yes, 0 no，defult）
-orders_data	|String	|Yes	|Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
+symbol		|String	|yes		|Ex: tok_eth
+type		|String	|yes		|order type: limit orders (1 buy/2 sell)
+openTok		|Integer|Optional	|Using TOK to pay for fees（1 yes, 0 no，defult）
+orders_data	|String	|Yes		|Ex：[{"amount":"100","price":"0.02","type":1},{"amount":"200","price":"0.03","type":1}]max order number is 5，for 'price' and 'amount' parameter, refer to trade/API. Final order type is decided primarily by 'type' field within 'orders_data' and subsequently by 'type' field (if no 'type' is provided within 'orders_data' field)
 
 ### Cancel order
 11.`POST /api/v1/cancelEntrust` Used to cancel orders  
@@ -428,14 +428,14 @@ POST https://www.tokok.com/api/v1/cancelEntrust
 ```
 Response Details
 ```javascript
-result :     true means order cancelled successfully, wait to be processed；false means fail to cancel order
+result:    true means order cancelled successfully, wait to be processed；false means fail to cancel order
 code:      error code
 ```
 
 Parameters
 Parameters	|Type	|Requires	|Description
 -|-|-|-
-order_id	|String	Yes	|Order ID
+order_id	|String	|Yes		|Order ID
 
 ### Batch cancel
 12.`POST /api/v1/batchCancel`    Used to batch cancel  
@@ -451,15 +451,15 @@ POST https://www.tokok.com/api/v1/batchCancel
 
 Response Details
 ```javascript
-result :     true means order cancelled successfully, wait to be processed；false means fail to cancel order
+result:    true means order cancelled successfully, wait to be processed；false means fail to cancel order
 code:      error code
 ```
 
 Parameters
 Parameters	|Type	|Required	|Description
 -|-|-|-
-symbol	|String	|yes	|Ex: tok_eth
-order_ids	|String	|yes	|Order Ids，Ex：[181114210459002003,181114210459001083] Maximum number is 5 
+symbol		|String	|yes		|Ex: tok_eth
+order_ids	|String	|yes		|Order Ids，Ex：[181114210459002003,181114210459001083] Maximum number is 5 
 
 
 ### Get orders info
@@ -501,7 +501,7 @@ Response Details
 data: 			order info
 entrustCount:		order amount
 processedPrice:		average transaction price
-entrustTime_long:	                order time
+entrustTime_long:	order time
 surplusEntrustCount: 	unfilled amount
 entrustNum: 		order ID
 entrustPrice:		order price
@@ -517,7 +517,7 @@ Parameters	|Type	|Required	|Description
 symbol	|String	|Yes	|Ex: tok_eth
 status	|Integer|Yes	|query status: 0 for unfilled orders, 1 for filled orders（maximum 10）
 page	|Integer|yes	|Current page number
-pageSize	|Integer	|Yes	|number of orders returned per page, maximum 50
+pageSize|Integer|Yes	|number of orders returned per page, maximum 50
 
 ### Get order info
 14.`POST /api/v1/order/orderInfo` Used to get specific order info  
@@ -551,11 +551,11 @@ Response Details
 ```javascript
 entrustCount:		order amount
 processedPrice:		average transation price
-entrustTime_long:	                order time
+entrustTime_long:	order time
 surplusEntrustCount: 	unfilled amount
 entrustNum: 		order ID
 entrustPrice:		order price
-status: 		 0:unfilled 1:partially filled 2:fully filled 3:partially cancel 4:cancelled
+status: 		0:unfilled 1:partially filled 2:fully filled 3:partially cancel 4:cancelled
 type:			order type：limit order (1 buy/2 sell)
 result:			true means request successfully handled
 ```
