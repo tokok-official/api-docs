@@ -2,11 +2,13 @@
 API interface documentation
 
 
-# Enable API
+## Enable API
 
 ‘api_key’ is the users’ access key provided by TOKOK, ‘secretKey’ is used to request parameter signature. To get api_key and secretKey, go to Account center- Security center and click Create API Key.
+
 Note：DO NOT  disclose these keys to anyone. Otherwise your account might be unsecure.
-Parameter Signature
+
+## Parameter Signature
 Web service requests are sent across the Internet and are vulnerable to tampering. For security 
 
  reasons, TOKOK requires a signature as part of every request except for ticker API.
@@ -17,7 +19,7 @@ ACCESS-KEY - that distributed when users created API Key
 ACCESS-SIGN- base64 encoded signature
 ACCESS-TIMESTAMP- the time at which you make the request. Unix timestamp format decimal in seconds (Ex：1543057116)
 
-How to sign
+## How to sign
 All parameters submitted by users, ACCESS-KEY and ACCESS-TIMESTAMP must to be signed.
 The parameters must be re-ordered alphabetically according to the initials of the parameter name.
 For example, 
@@ -29,10 +31,11 @@ The result string is
 ACCESS-KEY=09c2c831-6737-49db-879e-0b21416a54f6&ACCESS-TIMESTAMP=1543057116&entrustCount=100&entrustPrice=1.03&symbol=tok_eth&type=1
 ‘secretKey’ is required to generate HMAC SHA256 signature. Use HMAC SHA256 encryption function to sign the string. Pass the encrypted string, which is base64 encoded, to ‘ACCESS-SIGN’ parameter.
 
-REST API Reference
-Price API
+## REST API Reference
 
-Get ticker
+### Price API
+
+#### Get ticker
 1.Get /api/v1/tickers   Used to get price tickers for all markets.
 URL https://www.tokok.com/api/v1/tickers
 Example
@@ -100,7 +103,7 @@ Parameters	Type	Required	Description
 symbol	String	Yes	Ex: tok_eth
 
 
-Get market depth
+#### Get market depth
 3.Get /api/v1/depth Used to get market depth of a symbol
 URL https://www.tokok.com/api/v1/depth?symbol=tok_eth
 Example
